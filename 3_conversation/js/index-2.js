@@ -26,38 +26,6 @@
 
 
 
-// ####RANDOM QUOTE GENERATOR | Uncomment to view. ######
-// var quotes = {
-//     sayings:[
-       
-//          {
-//             name:'"There are far, far better things ahead than anything we leave behind."',
-//             saying:'– C. S. Lewis'
-//         },
-//         {
-//             name:'"A semicolon is used when an author could’ve chosen to end their sentence, but chose not to. Be a semicolon."',
-//             saying:'– Nando'
-//         },
-//         {
-//             name:'"If you never did you should. These things are fun and fun is good."' ,
-//             saying:'– Dr . Seuss'
-//         }
-//     ],
-//       change: function()
-//             {
-//                 var quotes = this.sayings[Math.floor(Math.random() * this.sayings.length)];
-//                 $('#quote').html(quotes.name);
-//                 $('#person').html(quotes.saying);
-//                 // console.log(quotes.name);
-//                 // console.log(quotes.saying)
-              
-//             }
-//         };
-        
-// quotes.change();
-
-// ######Susan is typing#########
-
 function typing(){
 			var typing = ` Susan is typing, please wait...`;
 			$('#conversation').append('<li id="typing" class="list-group-item text-left">  ' + typing + '</li>');
@@ -66,37 +34,18 @@ function typing(){
 				$("li").remove("#typing");
 			},3000);
 
-    }
- 
+    };
     
-    // #######3 LOADER #######
+    // ######LOADER######
 $(function(){
 
           $("#wait").css("display", "block");
 
         setTimeout(function(){
 								$("#wait").css("display", "none");
-				},6000);
-    });
-    
-    // #########Are you still tthere?#############
-    $(function(){
-
-         if($('#message').val() == '' ){
-             
-                    setTimeout(function(){
-                            var netflix = 'Hey, are you still there?';
-             		    	    $('#conversation').append('<li class="list-group-item text-left">  <img src="images/counselor-face.jpg" width="35" height="35" style="border-radius:35%" />  ' + netflix + '</li>');
-                            },60000);
-         }
-
-    //     setTimeout(function(){
-				// 				$("#wait").css("display", "none");
-				// },5000);
+				},5000);
 
     });
-    
-
     
 //###########LOADER#########
 //On load
@@ -104,49 +53,46 @@ $( function() {
 			//Object
 			var chatbot = {
 					//#### PROPERTIES ####
-					greeting: "Hi there! I'm Susan, Hope you are having a great day.",
+					greeting: "Hi there! Hope you are having a great day.",
 					questions: {
 						ask: 'So how are you feeling?',
 						//you can add:
-						answers: [ 
-                    		{
-                    		value: 'happy',
-                    		ask: 'That is great to hear! If you know of someone who might need our serices, please have them chat or call us! Thank you.',
-                    		}, 
-                    		{
-                    		value: 'sad' || 'Sad' || 'bad' || 'not so good' || 'depressed',
-                    		ask: 'I am sorry to hear that. Are you currently safe?',
-                        		answers: [ 
-                        			{
-                        				value: 'yes',
-                        				ask: 'I am so glad to hear! Are you thinking of hurting yourself?',
-                            				answers: [ 
-                            					{
-                            					value: 'yes',
-                            					ask: 'Oh no! It sounds like you need someone to talk to. Please call us at 1-800-273-8255.'
-                            					}, 
-                            					{
-                            					value: 'no',
-                            					ask: 'I am so glad to hear. Speaking to someone, whether by going to a therapist or by attending a support group, can help you feel better.'
-                            					}, 
-                            				]
-                        			} 
-                        		]
-                    	    } ]
-                    },
+						answers: [
+							{
+									value: 'happy',
+									ask: 'That is great to hear! If you know of someone who might need our serices, please have them chat or call us! Thank you.',
+							},
+              {
+									value: 'sad',
+									ask: 'I am sorry to hear that. Are you currently safe?',
+									answers:
+									[
+                    {
+											value: 'yes',
+											ask: 'I am so glad to hear! Are you thinking of hurting yourself?',
+											answers:
+											[
+                        {
+												value: 'yes',
+												ask: 'Oh no! It sounds like you need someone to talk to. Please call us at 1-800-273-8255.'
+												},
+												{
+												value: 'no',
+												ask: 'I am so glad to hear. Speaking to someone, whether by going to a therapist or by attending a support group, can help you feel better.'
+												},
+	                    ]
+										}
+                  ]
+								}
+						]
+					},
 
         answers: [],
-        goodbye: 'Oh no! It sounds like you need someone to talk to. Please call us at 1-800-273-8255.',
+        goodbye: "Ok. Well let me get someone else to help you with that.",
         isOver: false,
 				wait: function(msg){
-				    
-				    setTimeout(function(){
-				        typing();
-				        
-				    },3000);
-				            msg = 'Connecting you to Susan, please wait.';
-				        $('#conversation').append('<li class="list-group-item text-left"> ' + msg + '</li>');
-                            
+				          msg = 'Connecting you to someone, please wait 5 seconds.';
+				          $('#conversation').append('<li class="list-group-item text-left"> <i class="far fa-address-card"></i> ' + msg + '</li>');
 				        },
         //#### METHODS ####
         start: function() {
@@ -158,10 +104,10 @@ $( function() {
       			setTimeout( function() {
         						self.ask( self.greeting );
         						self.ask( self.questions.ask );
-									}, 10000 );
+									}, 5000 );
         },
         ask: function(message) {
-            $('#conversation').append('<li class="list-group-item text-left">  <img src="images/counselor-face.jpg" width="35" height="35" style="border-radius:35%" />  ' + message + '</li>');
+            $('#conversation').append('<li class="list-group-item text-left">' + message + '</li>');
         },
         answer: function() {
             var answer = $('#message').val();
@@ -169,7 +115,7 @@ $( function() {
             {
                 var answerObject = { value: answer };
                 this.answers.push(answerObject); //add object to array
-                $('#conversation').append('<li class="list-group-item text-right"><img src="images/me.jpg" width="35" height="35" style="border-radius:35%" /> ' + answer + '</li>');
+                $('#conversation').append('<li class="list-group-item text-right">' + answer + '</li>');
             }
             $('#message').val('');
 

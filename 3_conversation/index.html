@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Chatbot</title>
+    <title>Chatbot</title> 
     <!-- Font Awesome-->
     <link href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" rel='stylesheet' type='text/css'>
 
@@ -23,26 +23,40 @@
     <hr>
     <div class="container">
         <div class="row justify-content-center">
+          
           <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
+            
+            <div class="card card-main my-5">
+              
             <div class="card-body">
-              <div class="center"><img src= "images/counselor-face.jpg" width="200" height="200"></div>
-              <h5 class="card-title text-center">Susan</h5>
+              <div class="center">
+                      <img id="pic" src="images/counselor-face.jpg" width="200" height="200" /> 
+
+                
+                <!--<h1 id="quote">hiii</h1>-->
+                <!--<h1 id="person">-nando</h1>-->
+              
+              </div>
+              <!--<h5 class="card-title text-center">Susan</h5>-->
                 <form id="formMessage" autocomplete="off">
-                    <div class="input-group mb-3">
+                   
+                </form>
+                <!-- ### new div to scroll through -->
+              <div id="newcard-Body">
+                <ul id="conversation" class="list-group">
+                  
+                      <li class="list-group-item list-group-item-success">Please wait...</li>
+                        <input id="timestamp" type="text"/>
+
+                </ul>
+                <img id="wait" src='images/loader.gif' width="64" height="64"/>
+              </div>
+               <div class="input-group mb-3">
                         <input id="message" type="text" class="form-control" placeholder="Send message">
                         <div class="input-group-append">
                             <button id="addMessage" class="btn btn-success" type="button">Send</button>
                           </div>
                     </div>
-                </form>
-                <!-- ### new div to scroll through -->
-              <div id="newcard-Body">
-                <ul id="conversation" class="list-group">
-                      <li class="list-group-item list-group-item-success">Please wait...</li>
-                </ul>
-                <img id="wait" src='images/loader.gif' width="64" height="64"/>
-              </div>
             </div>
         </div>
     </div>
